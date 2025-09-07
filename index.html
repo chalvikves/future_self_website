@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Self - Connect with Your Tomorrow</title>
+    <meta name="description" content="Future Self helps you reflect and grow by connecting you with your future self through thoughtful notes and insights.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
+        .app-store-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            height: 60px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Future Self</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Connect with Your Future Self</h1>
+                <p>Reflect, grow, and build meaningful connections with tomorrow through thoughtful notes and AI-powered insights that help you become your best self.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Download Now</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="app-store-badges">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjAiIHk9IjIyIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BcHAgU3RvcmU8L3RleHQ+PC9zdmc+" alt="Download on App Store" class="badge">
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2>Why Future Self?</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Insights</h3>
+                        <p>Receive personalized coaching and reflection prompts tailored to your journey, helping you grow with each interaction.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📝</div>
+                        <h3>Thoughtful Journaling</h3>
+                        <p>Write notes to your future self and receive meaningful responses that help you reflect on your progress and goals.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy First</h3>
+                        <p>Your thoughts are encrypted and secure. We prioritize your privacy with end-to-end encryption for all your personal data.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h3>Track Your Growth</h3>
+                        <p>Monitor your reflection habits and see how your mindset evolves over time with insightful analytics and streaks.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔔</div>
+                        <h3>Smart Reminders</h3>
+                        <p>Get gentle nudges at the perfect time to reflect and connect with your thoughts, customized to your schedule.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">✨</div>
+                        <h3>Premium Experience</h3>
+                        <p>Unlock advanced features with Pro, including unlimited notes, custom tones, and priority support for your journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Future Self</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        Future Self is designed to help you build a meaningful relationship with your tomorrow. Through reflective journaling and AI-powered insights, we create a space for personal growth and self-discovery.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #666;">
+                        Whether you're working toward personal goals, processing life changes, or simply wanting to be more mindful, Future Self provides the tools and guidance to help you connect with your aspirations and become the person you want to be.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="refund" class="section">
+            <div class="container">
+                <h2>Refund & Return Policy</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: left; line-height: 1.8;">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">App Store Purchases</h3>
+                        <p style="margin-bottom: 1.5rem;">
+                            All purchases made through the Apple App Store are subject to Apple's refund policy. We do not process refunds directly for App Store purchases. To request a refund:
+                        </p>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Visit <a href="https://reportaproblem.apple.com" style="color: #667eea;">Apple's Report a Problem</a> page</li>
+                            <li>Sign in with your Apple ID</li>
+                            <li>Find your Future Self purchase and select "Request a Refund"</li>
+                            <li>Choose your reason and submit the request</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Subscription Cancellation</h3>
+                        <p style="margin-bottom: 1.5rem;">
+                            You can cancel your Future Self Pro subscription at any time through your device settings:
+                        </p>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li><strong>iOS:</strong> Settings → Apple ID → Subscriptions → Future Self Pro → Cancel</li>
+                            <li>Cancellation takes effect at the end of your current billing period</li>
+                            <li>You'll continue to have access to Pro features until the subscription expires</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Refund Eligibility</h3>
+                        <p style="margin-bottom: 1.5rem;">
+                            While we cannot process direct refunds, Apple may approve refund requests in cases such as:
+                        </p>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Accidental purchases</li>
+                            <li>Technical issues preventing app usage</li>
+                            <li>Purchases made by minors without permission</li>
+                            <li>App not working as described</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Contact Support</h3>
+                        <p style="margin-bottom: 1rem;">
+                            If you're experiencing issues with the app or have questions about your subscription, please contact us at <a href="mailto:hello@futureself.app" style="color: #667eea;">hello@futureself.app</a> before requesting a refund. We're here to help resolve any problems you may encounter.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Free Trial</h3>
+                        <p style="margin-bottom: 1rem;">
+                            If Future Self Pro offers a free trial, you can cancel anytime during the trial period without being charged. The cancellation will take effect immediately, and you won't be billed when the trial ends.
+                        </p>
+
+                        <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+                            <em>This policy was last updated on January 2025. We reserve the right to update this policy at any time.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="section">
+            <div class="container">
+                <h2>Privacy Policy</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: left; line-height: 1.8;">
+                        <p style="margin-bottom: 2rem; color: #666;">
+                            <em>Effective Date: January 2025</em>
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Introduction</h3>
+                        <p style="margin-bottom: 2rem;">
+                            Future Self ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application and services.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Information We Collect</h3>
+                        <h4 style="margin-bottom: 0.5rem; font-weight: 600;">Personal Information</h4>
+                        <ul style="margin-bottom: 1.5rem; padding-left: 2rem;">
+                            <li>Email address (for account creation and communication)</li>
+                            <li>Display name (optional, for personalization)</li>
+                            <li>Authentication information (Apple ID, or email/password)</li>
+                        </ul>
+
+                        <h4 style="margin-bottom: 0.5rem; font-weight: 600;">App Usage Data</h4>
+                        <ul style="margin-bottom: 1.5rem; padding-left: 2rem;">
+                            <li>Journal entries and notes (encrypted and stored securely)</li>
+                            <li>App usage analytics (frequency, features used)</li>
+                            <li>Device information (iOS version, device type)</li>
+                            <li>Crash reports and error logs</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">How We Use Your Information</h3>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Provide and improve our app services</li>
+                            <li>Generate AI-powered insights and responses</li>
+                            <li>Send important app updates and notifications</li>
+                            <li>Process subscription payments through Apple</li>
+                            <li>Analyze app performance and user experience</li>
+                            <li>Provide customer support</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Data Security & Encryption</h3>
+                        <p style="margin-bottom: 2rem;">
+                            Your journal entries and personal notes are encrypted using industry-standard encryption methods. We implement appropriate technical and organizational measures to protect your data against unauthorized access, alteration, disclosure, or destruction.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Data Sharing</h3>
+                        <p style="margin-bottom: 1rem;">We do not sell your personal information. We may share data only in these limited circumstances:</p>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li><strong>Service Providers:</strong> Firebase (Google), RevenueCat for analytics and payments</li>
+                            <li><strong>AI Services:</strong> Anonymized content for generating insights (no personal identifiers)</li>
+                            <li><strong>Legal Requirements:</strong> If required by law or to protect rights and safety</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Your Rights</h3>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Access your personal data</li>
+                            <li>Correct inaccurate information</li>
+                            <li>Delete your account and data</li>
+                            <li>Export your data</li>
+                            <li>Opt out of non-essential communications</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Children's Privacy</h3>
+                        <p style="margin-bottom: 2rem;">
+                            Our app is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we discover such information, we will delete it immediately.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Contact Us</h3>
+                        <p style="margin-bottom: 1rem;">
+                            For questions about this Privacy Policy or to exercise your rights, contact us at <a href="mailto:hello@futureself.app" style="color: #667eea;">hello@futureself.app</a>.
+                        </p>
+
+                        <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+                            <em>This Privacy Policy may be updated periodically. We will notify users of significant changes through the app or via email.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="terms" class="section">
+            <div class="container">
+                <h2>Terms of Service</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: left; line-height: 1.8;">
+                        <p style="margin-bottom: 2rem; color: #666;">
+                            <em>Effective Date: January 2025</em>
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Acceptance of Terms</h3>
+                        <p style="margin-bottom: 2rem;">
+                            By downloading, installing, or using the Future Self mobile application, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use our app.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Description of Service</h3>
+                        <p style="margin-bottom: 2rem;">
+                            Future Self is a personal development app that helps users reflect and grow through journaling and AI-powered insights. We provide tools for self-reflection, goal tracking, and personal growth through our mobile application.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">User Accounts</h3>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>You must be at least 13 years old to use our service</li>
+                            <li>You are responsible for maintaining account security</li>
+                            <li>You must provide accurate and complete information</li>
+                            <li>One account per person; sharing accounts is prohibited</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Acceptable Use</h3>
+                        <p style="margin-bottom: 1rem;">You agree not to:</p>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Use the app for illegal or harmful purposes</li>
+                            <li>Share content that is offensive, harassing, or inappropriate</li>
+                            <li>Attempt to reverse engineer or hack the application</li>
+                            <li>Share your account credentials with others</li>
+                            <li>Use the app to harm yourself or others</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Subscription and Payments</h3>
+                        <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                            <li>Future Self Pro is available as a subscription service</li>
+                            <li>Payments are processed through Apple's App Store</li>
+                            <li>Subscriptions auto-renew unless cancelled</li>
+                            <li>Refunds are subject to Apple's refund policy</li>
+                            <li>We may change subscription prices with advance notice</li>
+                        </ul>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Intellectual Property</h3>
+                        <p style="margin-bottom: 2rem;">
+                            The Future Self app, including all content, features, and functionality, is owned by us and protected by copyright, trademark, and other intellectual property laws. You retain ownership of your journal entries and personal content.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">AI-Generated Content</h3>
+                        <p style="margin-bottom: 2rem;">
+                            Our app uses artificial intelligence to generate insights and responses. While we strive for accuracy and helpfulness, AI-generated content is for informational purposes only and should not be considered professional advice.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Disclaimer of Warranties</h3>
+                        <p style="margin-bottom: 2rem;">
+                            The app is provided "as is" without warranties of any kind. We do not guarantee that the service will be uninterrupted or error-free. Future Self is not a substitute for professional mental health care.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Limitation of Liability</h3>
+                        <p style="margin-bottom: 2rem;">
+                            To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the app.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Termination</h3>
+                        <p style="margin-bottom: 2rem;">
+                            We may terminate or suspend your account at any time for violation of these terms. You may delete your account at any time through the app settings.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Changes to Terms</h3>
+                        <p style="margin-bottom: 2rem;">
+                            We reserve the right to modify these terms at any time. We will notify users of significant changes through the app or via email. Continued use after changes constitutes acceptance.
+                        </p>
+
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Contact Information</h3>
+                        <p style="margin-bottom: 1rem;">
+                            For questions about these Terms of Service, contact us at <a href="mailto:hello@futureself.app" style="color: #667eea;">hello@futureself.app</a>.
+                        </p>
+
+                        <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+                            <em>These terms govern your use of Future Self and constitute a legal agreement between you and Future Self.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Future Self</h3>
+                    <p>Helping you connect with tomorrow through thoughtful reflection and personal growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="#pricing">Pricing</a></p>
+                    <p><a href="#support">Support</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <p><a href="#about">About</a></p>
+                    <p><a href="#privacy">Privacy Policy</a></p>
+                    <p><a href="#terms">Terms of Service</a></p>
+                </div>
+                <div class="footer-section" id="contact">
+                    <h3>Contact</h3>
+                    <p>support@futureself.app</p>
+                    <p>For business inquiries and support</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Future Self. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
